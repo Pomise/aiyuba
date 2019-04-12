@@ -1,0 +1,16 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/themes/themes",
+    "pages/voice/voice",
+    "pages/TED/TED"
+  ],
+  "window":{
+    "backgroundTextStyle":"white",
+    "navigationBarBackgroundColor": "#48C23D",
+    "navigationBarTitleText": "爱语吧",
+    "navigationBarTextStyle":"white",
+    "backgroundColor" : "#FFF"
+  }
+}

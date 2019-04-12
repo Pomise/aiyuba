@@ -1,0 +1,37 @@
+<!--pages/voice/voice.wxml-->
+<!--视频播放条目-->
+<view class="video-box">
+    <video id="myVideo" src="{{src}}" poster="{{poster}}" binderror="videoErrorCallback" danmu-list="{{danmuList}}" controls="ture" show-show-fullscreen-btn='ture' objectFit="fill" bindtimeupdate="videoTimeUpdated" bindplay="videoPlayed" binderror="videoErrorCallback" style="width:{{winWidth}}px;height:{{winHeight*350/1000}}px"></video>
+</view>
+    
+<scroll-view scroll-y="true" class="contain_detail_cnt" style="height:{{winHeight-winHeight*350/1000}}px;">
+    <!-- 显示标题-->
+     <view class="hot-main">
+        <view class="hot-main-box">
+            <view class="hot-main-title">{{data_title.title}}</view>
+            <view class="hot-main-subtitle">{{data_title.title_cn}}</view>
+        </view>
+    </view> 
+
+    <!-- 内容 -->
+    <view class="hot-box-main">
+        <view wx:for="{{text_list.data}}" wx:for-index="i" wx:for-item="items" wx:key="index">
+            <!-- <navigator id="{{items.ParaId}}" url="../detail/detail?id={{items.id}}"> -->
+                <view class="list-box" data-id="{{items.id}}" bindtap="dispalychage">
+                    <view class="list-box-titl" style="color:{{items.color}}">{{items.Sentence}}</view>
+                    <view class="list-box-title"style="display:{{items.display}}" >{{items.Sentence_cn}}</view>
+                </view>
+                <!-- <view class="list-box">
+                    <view class="list-box-title" style="color:{{items.color}}">{{items.Sentence_cn}}</view>
+                </view> -->
+            <!-- </navigator> -->
+        </view>
+    </view>
+
+    <!-- 悬浮按钮显示-->
+    <view bindtap='show_chinese' style="opacity:{{opacity_data}};">
+      <image class="click_chinese" src="{{tran_imgsrc}}"></image>
+  </view>
+</scroll-view>
+
+

@@ -1,0 +1,87 @@
+
+<!-- loading -->
+ <!-- <loading hidden="{{hidden}}">
+    加载中...
+</loading>  -->
+
+<!--menubar-->
+<view class="swiper-tab" style="width:{{windowWidth}}px">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0"  bindtap="swich">头条</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1"  bindtap="swich">TED</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2"   bindtap="swich">音频</view>
+</view>
+<!--content-->
+<swiper current="{{currentTab}}" class="swiper-box" style="height: {{windowHeight}}px; width: {{windowWidth}}px;"    duration="300" bindchange='bind_swich'>
+<!--头条-->
+  <swiper-item>
+    <scroll-view scroll-y="true" class="content" style="height: {{windowHeight}}px; width: {{windowWidth}}px;"  bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad">
+      <view class="newsBox top">
+          <block wx:for="{{headline}}" wx:key="index" >
+              <navigator class="details" url="../themes/themes?id={{headline[index].Id}}&title={{headline[index].Title}}&title_cn={{headline[index].Title_cn}}&PIC={{headline[index].Pic}}">
+                  <text class="title">{{headline[index].Title}}</text>
+                  <text class="title-cn">{{headline[index].Title_cn}}</text>
+                  <view class="picBox" style="width: {{windowWidth}}px;">
+                      <image src="{{headline[index].Pic}}" style=" width: {{windowWidth}}px;"mode="scaleToFill"></image>
+                  </view>
+                  <view class="info">
+                      <text class="author">{{headline[index].Source}}</text>
+                      <text class="date">{{headline[index].CreateTime}}</text>
+                  </view>
+              </navigator>
+          </block>
+      </view>
+    </scroll-view>
+  </swiper-item>  
+  <!--视频-->
+  <swiper-item>
+    <scroll-view scroll-y="true" class="content" style="height: {{windowHeight}}px; width: {{windowWidth}}px;"  bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad">
+      <view class="newsBox top">
+          <block wx:for="{{movies}}" wx:key="index">
+              <navigator class="details" url="../TED/TED?id={{movies[index].Id}}&title={{movies[index].Title}}&title_cn={{movies[index].Title_cn}}&PIC={{movies[index].Pic}}&Sound={{movies[index].Sound}}&type={{movies[index].Type}}">
+                  <text class="title">{{movies[index].Title}}</text>
+                  <text class="title-cn">{{movies[index].Title_cn}}</text>
+                  <view class="picBox">
+                      <image src="{{movies[index].Pic}}" style=" width: {{windowWidth}}px;"mode="scaleToFill"></image>
+                  </view>
+                  <view class="info">
+                      <text class="author">{{movies[index].Type}}</text>
+                      <text class="date">{{movies[index].CreateTime}}</text>
+                  </view>
+              </navigator>
+          </block>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <!--音频-->
+  <swiper-item>
+     <scroll-view scroll-y="true" class="content" style="height: {{windowHeight}}px; width: {{windowWidth}}px;"  bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad">
+       <view class="newsBox top"> 
+          <block wx:for="{{voices}}" wx:key="index" >
+              <navigator url="../voice/voice?id={{voices[index].Id}}&title={{voices[index].Title}}&title_cn={{voices[index].Title_cn}}&PIC={{voices[index].Pic}}&Sound={{voices[index].Sound}}&type={{voices[index].Type}}">
+                  <!-- <text class="title">{{voices[index].Title_cn}}</text>
+                  <text class="title">{{voices[index].Title}}</text>
+                  <view class="picBox">
+                      <image src="{{voices[index].Pic}}" style=" width: {{windowWidth}}px;"mode="scaleToFill"></image>
+                  </view>
+                  <view class="info">
+                      <text class="author">{{voices[index].Type}}</text>
+                      <text class="date">{{voices[index].CreateTime}}</text>
+                  </view> -->
+                <view class="themes-list">
+                  <view class="themes-list-box">
+                        <view class="themes-list-thumbnail">
+                            <image class="themes-list-img" src="{{voices[index].Pic}}" ></image>
+                        </view>
+                        <view class="themes-list-main">
+                            <view class="themes-list-title">{{voices[index].Title}}</view>
+                            <view class="themes-list-title_cn">{{voices[index].Title_cn}}</view>
+                        </view>
+                  </view>
+                </view>
+              </navigator>
+          </block>
+       </view>  
+    </scroll-view>
+  </swiper-item>
+</swiper>

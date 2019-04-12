@@ -1,0 +1,35 @@
+<scroll-view scroll-y="true" class="contain_detail_cnt">
+
+    <!-- 显示标题-->
+     <view class="hot-main">
+        <view class="hot-main-box">
+            <view class="hot-main-title">{{data_title.title}}</view>
+            <view class="hot-main-subtitle">{{data_title.title_cn}}</view>
+        </view>
+    </view> 
+
+    <!-- 配图-->
+    <view class=".img-box" style="width:{{winWidth}}px;">
+        <image mode="scaleToFill" style="width:{{winWidth}}px;" class=".text-img" src="{{data_title.PIC}}" ></image>
+    </view>
+    <!-- 内容 -->
+    <view class="hot-box-main">
+        <view wx:for="{{text_list.data}}" wx:for-index="i" wx:for-item="items" wx:key="index">
+            <!-- <navigator id="{{items.id}}" url="../detail/detail?id={{items.id}}"> -->
+                <view class="list-box" data-id="{{items.id}}" bindtap="dispalychage">
+                    <view class="list-box-title">{{items.Sentence}}</view>
+                    <view class="list-box-title"style="display:{{items.display}}" >{{items.Sentence_cn}}</view>
+                </view>
+                 <!-- <view class="list-box" style="display:none">
+                    <view class="list-box-title">{{items.Sentence_cn}}</view>
+                </view>  -->
+            <!-- </navigator> -->
+        </view>
+    </view>
+
+<!-- 悬浮按钮显示-->
+    <view bindtap='show_chinese' style="opacity:{{opacity_data}};">
+      <image class="click_chinese" src="{{tran_imgsrc}}"></image>
+  </view>
+
+</scroll-view>
